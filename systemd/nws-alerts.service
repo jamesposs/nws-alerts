@@ -1,0 +1,19 @@
+[Unit]
+Description=NWS alerts thermal receipt printer
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=weather
+Group=weather
+WorkingDirectory=/opt/nws-alerts
+EnvironmentFile=/opt/nws-alerts/.env
+Environment=PYTHONUNBUFFERED=1
+Environment=PATH=/opt/nws-alerts/.venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+ExecStart=/usr/bin/env python -m app.main
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,25 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "id": "https://example.test/alerts/TST-2026-0001",
+      "type": "Feature",
+      "properties": {
+        "event": "Tornado Warning",
+        "sent": "2026-04-21T19:15:00-04:00",
+        "effective": "2026-04-21T19:15:00-04:00",
+        "onset": "2026-04-21T19:15:00-04:00",
+        "expires": "2026-04-21T19:45:00-04:00",
+        "description": "At 7:15 PM EDT, a severe thunderstorm capable of producing a tornado was located near Decatur, moving east at 35 mph.\n\nHazard...Tornado and quarter size hail.",
+        "instruction": "Take cover now. Move to a basement or an interior room on the lowest floor of a sturdy building. Avoid windows.",
+        "severity": "Extreme",
+        "certainty": "Observed",
+        "urgency": "Immediate",
+        "status": "Actual",
+        "messageType": "Alert",
+        "senderName": "NWS Peachtree City GA",
+        "headline": "Tornado Warning issued April 21 at 7:15PM EDT until April 21 at 7:45PM EDT by NWS Peachtree City GA"
+      }
+    }
+  ]
+}

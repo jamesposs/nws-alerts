@@ -1,0 +1,25 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "id": "https://example.test/alerts/TST-2026-0001",
+      "type": "Feature",
+      "properties": {
+        "event": "Tornado Warning",
+        "sent": "2026-04-21T19:22:00-04:00",
+        "effective": "2026-04-21T19:15:00-04:00",
+        "onset": "2026-04-21T19:15:00-04:00",
+        "expires": "2026-04-21T20:00:00-04:00",
+        "description": "At 7:22 PM EDT, a confirmed tornado was located over Decatur, moving east at 40 mph.\n\nHazard...Damaging tornado and golf ball size hail.",
+        "instruction": "Take cover now. Move underground if possible. Protect your head and stay away from windows.",
+        "severity": "Extreme",
+        "certainty": "Observed",
+        "urgency": "Immediate",
+        "status": "Actual",
+        "messageType": "Alert",
+        "senderName": "NWS Peachtree City GA",
+        "headline": "Tornado Warning updated April 21 at 7:22PM EDT until April 21 at 8:00PM EDT by NWS Peachtree City GA"
+      }
+    }
+  ]
+}
