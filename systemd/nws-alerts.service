@@ -5,13 +5,11 @@ Wants=network-online.target
 
 [Service]
 Type=simple
-User=weather
-Group=weather
+User=jamesposs
 WorkingDirectory=/opt/nws-alerts
 EnvironmentFile=/opt/nws-alerts/.env
 Environment=PYTHONUNBUFFERED=1
-Environment=PATH=/opt/nws-alerts/.venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-ExecStart=/usr/bin/env python -m app.main
+ExecStart=/opt/nws-alerts/.venv/bin/python -m app.main
 Restart=always
 RestartSec=5
 
