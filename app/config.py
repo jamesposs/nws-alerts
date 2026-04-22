@@ -45,6 +45,16 @@ def _parse_float(name: str, default: float) -> float:
         raise ConfigError(f"{name} must be a number.") from exc
 
 
+def _parse_required_float(name: str) -> float:
+    value = os.getenv(name, "").strip()
+    if not value:
+        raise ConfigError(f"{name} is required.")
+    try:
+        return float(value)
+    except ValueError as exc:
+        raise ConfigError(f"{name} must be a number.") from exc
+
+
 def _parse_csv(name: str) -> tuple[str, ...]:
     value = os.getenv(name, "")
     return tuple(item.strip() for item in value.split(",") if item.strip())
@@ -168,8 +178,8 @@ def load_config(dotenv_path: str | Path | None = None) -> Config:
         raise ConfigError(f"LOG_LEVEL must be one of: {', '.join(sorted(valid_levels))}")
 
     config = Config(
-        nws_latitude=_parse_float("NWS_LATITUDE", 40.016869),
-        nws_longitude=_parse_float("NWS_LONGITUDE", -105.270546),
+        nws_latitude=_parse_required_float("NWS_LATITUDE"),
+        nws_longitude=_parse_required_float("NWS_LONGITUDE"),
         nws_user_agent=nws_user_agent,
         nws_accept=os.getenv("NWS_ACCEPT", "application/geo+json").strip() or "application/geo+json",
         poll_interval_seconds=poll_interval_seconds,
@@ -199,6 +209,10 @@ def load_config(dotenv_path: str | Path | None = None) -> Config:
         immediate_threshold_seconds=_parse_int("IMMEDIATE_THRESHOLD_SECONDS", 120),
     )
 
+    if not -90 <= config.nws_latitude <= 90:
+        raise ConfigError("NWS_LATITUDE must be between -90 and 90.")
+    if not -180 <= config.nws_longitude <= 180:
+        raise ConfigError("NWS_LONGITUDE must be between -180 and 180.")
     if config.http_max_retries < 1:
         raise ConfigError("HTTP_MAX_RETRIES must be at least 1.")
     if config.http_timeout_seconds <= 0:
